@@ -71,11 +71,23 @@ const Home = () => {
     setLista((prevState) =>
       prevState.filter((elemento, indice) => indice !== indexItem)
     );
+    fetch("https://assets.breatheco.de/apis/fake/todos/user/asd", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify([
+        ...lista,
+        { label: `${e.target[0].value}`, done: false },
+      ]),
+    })
   };
+
+
+  
   return (
     <div className="container">
       <form type="submit" onSubmit={agregarDato}>
         <h1 className="Titulo">Todos</h1>
+        {/* <p> Tareas:</p> */}
         <input type="text"></input>
       </form>
       <ul>
